@@ -16,7 +16,7 @@ function writePassword() {
 			pwd.upperCase = confirm("Please click 'OK' if you would like to have 'UPPER CASE' letters in your generated password.");
 			pwd.lowerCase = confirm("Please click 'OK' if you would like to have 'lower case' letters in your generated password.");
 			pwd.numChar = confirm("Please click 'OK' if you would like to have numbers in your generated password.");
-			pwd.specChar = confirm("Please click 'OK' if you would like to have special characters in your generated password.");
+			pwd.specChar = confirm("Please click 'OK' if you would like to have special characters (#, %, *, $, @, etc.) in your generated password.");
 			
 			//check to see what values are being logged
 			console.log(charCount, pwd.upperCase, pwd.lowerCase, pwd.specChar, pwd.numChar);
@@ -33,63 +33,48 @@ function writePassword() {
 	function generatePassword () {
 		if (pwd.specChar === true && pwd.lowerCase === true && pwd.upperCase === true && pwd.numChar === true){
 			compiledChar = options.all;
-			//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
-			//console.log(options.all);
+
 		} else if (pwd.specChar === true && pwd.lowerCase === true && pwd.upperCase === true){
 			compiledChar = options.slu;
-			//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
-			//console.log(options.slu);
+
 		} else if (pwd.specChar === true && pwd.lowerCase === true && pwd.numChar === true){
 			compiledChar = options.sln;
-			//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
-			//console.log(options.sln);
+
 		} else if (pwd.specChar === true && pwd.upperCase === true && pwd.numChar === true){
 			compiledChar = options.sun;
-			//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
-			//console.log(options.sun);
+
 		} else if (pwd.lowerCase === true && pwd.upperCase === true && pwd.numChar === true){
 			compiledChar = options.lun;
-			//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
-			//console.log(options.lun);
+
 		} else if (pwd.specChar === true && pwd.lowerCase === true){
 			compiledChar = options.sl;
-			//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
-			//console.log(options.sl);
+
 		} else if (pwd.specChar === true && pwd.upperCase === true){
 			compiledChar = options.su;
-			//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
-			//console.log(options.su);
+
 		} else if (pwd.specChar === true && pwd.numChar === true){
 			compiledChar = options.sn;
-			//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
+
 		} else if (pwd.lowerCase === true && pwd.upperCase === true){
 			compiledChar = options.lu;
-			//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
-			//console.log(options.lu);
+
 		} else if (pwd.lowerCase === true && pwd.numChar === true){
 			compiledChar = options.ln;
-			//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
-			//console.log(options.ln);
+
 		} else if (pwd.upperCase === true && pwd.numChar === true){
 			compiledChar = options.un;
-			//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
-			//console.log(options.un);
+
 		} else if (pwd.upperCase === true){
 			compiledChar = charactersUpper;
-			//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
-			//console.log(charactersUpper);
+
 		} else if (pwd.lowerCase === true){
 			compiledChar = charactersLower;
-			//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
-			//console.log(charactersLower);
+
 		} else if (pwd.numChar === true){
 			compiledChar = numChar;
-			//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
-			//console.log(numChar);
+
 		} else if (pwd.specChar){
 			compiledChar = specials;
-			//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
-			//console.log(specials);
 		};
 
 		for (i = 0; i < charCount; i++){
@@ -101,7 +86,7 @@ function writePassword() {
 	var passwordHolder = [];
 		console.log(passwordHolder);
 	var newPassword = generatePassword();
-	var passwordText = document.querySelector();
+	var passwordText = document.querySelector('#password');
 	passwordText.value = newPassword;
 }
 
@@ -126,10 +111,10 @@ var pwd = {
 }
 
 //values that will be used to generate the random password
-var specials = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
-var charactersLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var charactersUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var numChar = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var specials = ".'):~;!-#%*$@=>[(&{}<?]^+/";
+var charactersLower = "abcdefghijklmnopqrstuvwxyz";
+var charactersUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numChar = "1234567890";
 
 //variables that outline all possibilites for adding together characters based on user input
 var options ={
