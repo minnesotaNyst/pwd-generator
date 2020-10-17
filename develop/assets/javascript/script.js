@@ -1,6 +1,7 @@
 
 //---WRITE THE PASSWORD CRITERIA----//
 function writePassword() {
+	//create a reset so the end user does not get caught in an infinite loop
 	pwd.reset();
 	//we need to gather the critera for the password in order to generate one
 	charCount = parseInt(prompt('How many characters would you like your password to be? Please select a number between 8 and 128.'));
@@ -30,21 +31,76 @@ function writePassword() {
 		
 	//----GENERATE THE PASSWORD----//
 	function generatePassword () {
-		if (pwd.upperCase === true && pwd.lowerCase === true && pwd.numbers === true && pwd.specChar === true){
-			//execute for loop here for whatever length the end user determines will be thier pasword
-			for (i = 0; i < charCount; i++){
-				var char = Math.floor(Math.random() * options.all.length);
-				compiled += options.all.charAt(char);
-				console.log(compiled);
-			}
-		}
+		if (pwd.specChar === true && pwd.lowerCase === true&& pwd.upperCase === true && pwd.numbers === true){
+				compiled = options.all;
+				//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
+				console.log(options.all);
+			} else if (pwd.specChar === true && pwd.lowerCase === true && pwd.upperCase === true){
+				compiled = options.slu;
+				//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
+				console.log(option.slu);
+			} else if (pwd.specChar === true && pwd.lowerCase === true && pwd.numbers === true){
+				compiled = options.sln;
+				//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
+				console.log(option.sln);
+			} else if (pwd.specChar === true && pwd.upperCase === true && pwd.numbers === true){
+				compiled = options.sun;
+				//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
+				console.log(options.sun);
+			} else if (pwd.lowerCase === true && pwd.upperCase === true && pwd.numbers === true){
+				compiled = options.lun;
+				//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
+				console.log(options.lun);
+			} else if (pwd.specChar === true && pwd.lowerCase === true){
+				compiled = options.sl;
+				//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
+				console.log(options.sl);
+			} else if (pwd.specChar === true && pwd.upperCase === true){
+				compiled = options.su;
+				//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
+				console.log(options.su);
+			} else if (pwd.specChar === true && pwd.numbers === true){
+				compiled = options.sn;
+				//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
+			} else if (pwd.lowerCase === true && pwd.upperCase === true){
+				compiled = options.lu;
+				//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
+				console.log(options.lu);
+			} else if (pwd.lowerCase === true && pwd.numbers === true){
+				compiled = options.ln;
+				//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
+				console.log(options.ln);
+			} else if (pwd.upperCase === true && pwd.numbers === true){
+				compiled = options.un;
+				//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
+				console.log(options.un);
+			} else if (pwd.upperCase === true){
+				compiled = charactersUpper;
+				//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
+				console.log(charactersUpper);
+			} else if (pwd.lowerCase === true){
+				compiled = charactersLower;
+				//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
+				console.log(charactersLower);
+			} else if (pwd.numbers === true){
+				compiled = numbers;
+				//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
+				console.log(numbers);
+			} else if (pwd.specChar){
+				compiled = specials;
+				//REMOVE: logging the options to make sure program is running correctly, remove once ready for production
+				console.log(specials);
+			};
+
 
 	}
 
-	var compiled = generatePassword();
-	var passwordText = document.querySelector(compiled);
 
-	passwordText.value = compiled;
+	var compiled = [];
+	var newPassword = generatePassword();
+	var passwordText = document.querySelector(newPassword);
+
+	passwordText.value = newPassword;
 }
 
 // Assignment Code
@@ -72,8 +128,6 @@ var specials = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".",
 var charactersLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var charactersUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-
-var compiled = "";
 
 //variables that outline all possibilites for adding together characters based on user input
 var options ={
