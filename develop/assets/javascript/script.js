@@ -1,13 +1,8 @@
 
-
-//values that will be used to generate the random password
-var specials = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
-var characters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-// Write password to the #password input
+//---WRITE THE PASSWORD CRITERIA----//
 function writePassword() {
-	//----USER PROMPTS----//
+	pwd.reset();
+	//we need to gather the critera for the password in order to generate one
 	charCount = parseInt(prompt('How many characters would you like your password to be? Please select a number between 8 and 128.'));
 	//check to see that a charCount number exists and determine if it is between 8 and 128
 		if (!charCount){
@@ -17,26 +12,39 @@ function writePassword() {
 			alert("Please enter a valid number between 8 and 128");
 			return writePassword();
 		}else {
-			upperCase = confirm("Please click 'OK' if you would like to have 'UPPER CASE' letters in your generated password.");
-			lowerCase = confirm("Please click 'OK' if you would like to have 'lower case' letters in your generated password.");
-			specChar = confirm("Please click 'OK' if you would like to have special characters in your generated password.");
-			numbers = confirm("Please click 'OK' if you would like to have numbers in your generated password.");
-
+			pwd.upperCase = confirm("Please click 'OK' if you would like to have 'UPPER CASE' letters in your generated password.");
+			pwd.lowerCase = confirm("Please click 'OK' if you would like to have 'lower case' letters in your generated password.");
+			pwd.numbers = confirm("Please click 'OK' if you would like to have numbers in your generated password.");
+			pwd.specChar = confirm("Please click 'OK' if you would like to have special characters in your generated password.");
+			
 			//check to see what values are being logged
-			console.log(charCount, upperCase, lowerCase, specChar, numbers);
+			console.log(charCount, pwd.upperCase, pwd.lowerCase, pwd.specChar, pwd.numbers);
 		};
 
 		//----CRITERIA CHECK----//
 		//the requirment is that at least one critera be selected in order to generate a password
-		if (!upperCase && !lowerCase && !specChar && !numbers){
-			passwordCriteria = alert("Please select at least one criteria...");
+		if (!pwd.upperCase && !pwd.lowerCase && !pwd.specChar && !pwd.numbers){
+			newPassword = alert("Please select at least one criteria...");
 			return writePassword(); //TODO: this could affect workflow negatively by sending the user back to the begining, work on adjusting this later
 		}
+		
+	//----GENERATE THE PASSWORD----//
+	function generatePassword () {
+		if (pwd.upperCase === true && pwd.lowerCase === true && pwd.numbers === true && pwd.specChar === true){
+			//execute for loop here for whatever length the end user determines will be thier pasword
+			for (i = 0; i < charCount; i++){
+				var char = Math.floor(Math.random() * options.all.length);
+				compiled += options.all.charAt(char);
+				console.log(compiled);
+			}
+		}
 
-	var password = generatePassword();
-	var passwordText = document.querySelector('#password');
+	}
 
-	passwordText.value = password;
+	var compiled = generatePassword();
+	var passwordText = document.querySelector(compiled);
+
+	passwordText.value = compiled;
 }
 
 // Assignment Code
@@ -46,12 +54,42 @@ var generateBtn = document.querySelector('#generate');
 //values that will be defiend by the end user
 //created outside of a function so they can be called by other functions(global variables)
 var charCount;
-var upperCase;
-var lowerCase;
-var specChar;
-var numbers;
+var pwd = {
+	upperCase: true,
+	lowerCase: true,
+	numbers: true,
+	specChar: true,
+	reset: function(){
+		this.upperCase = true;
+		this.lowerCase = true;
+		this.specChar = true;
+		this.numbers = true;
+	}
+}
 
-var passwordCriteria;
+//values that will be used to generate the random password
+var specials = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
+var charactersLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var charactersUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+var compiled = "";
+
+//variables that outline all possibilites for adding together characters based on user input
+var options ={
+	all: specials + charactersLower + charactersUpper + numbers,
+	slu: specials + charactersLower + charactersUpper,
+	sln: specials + charactersLower + numbers,
+	sun: specials + charactersUpper + numbers,
+	lun: charactersLower + charactersUpper + numbers,
+	sl: specials + charactersLower,
+	su: specials + charactersUpper,
+	sn: specials + numbers,
+	lu: charactersLower + charactersUpper,
+	ln: charactersLower + numbers,
+	un: charactersUpper + numbers,
+}
+
 
 //------------CALL THE FUNCTION----------------//
 //when the button is clicked, call the writePassword function
