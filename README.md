@@ -31,13 +31,5 @@ https://minnesotanyst.github.io/pwd-generator/
 
 ### Preview 
 
-
-
-## Review
-
-You are required to submit the following for review:
-
-* The URL of the deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+![Deployed Screenshot](./assets/images/deployed-password-generator.png)
 
