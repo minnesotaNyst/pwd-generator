@@ -46,7 +46,6 @@ function generatePassword() {
 		};
 
 		//----CRITERIA CHECK----//
-		//the requirment is that at least one critera be selected in order to generate a password
 		if (!pwd.upperCase && !pwd.lowerCase && !pwd.specChar && !pwd.numChar){
 			alert("Please select at least one criteria...");
 			generatePassword();
