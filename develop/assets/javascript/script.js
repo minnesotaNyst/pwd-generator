@@ -46,8 +46,7 @@ var options ={
 function generatePassword() {
 	//create a reset so the end user does not get caught in an infinite loop
 	pwd.reset();
-	//TODO: need to reset charCount to nothing so if the end user wants to generate a second password that it doesn't combine the one prior perpetually...
-	charCount = null;
+	let newPassword = "";
 	//we need to gather the critera for the password in order to generate one
 	charCount = parseInt(prompt('How many characters would you like your password to be? Please select a number between 8 and 128.'));
 	//check to see that a charCount number exists and determine if it is between 8 and 128
@@ -136,6 +135,7 @@ function writePassword() {
   
 	passwordText.value = newPassword;
   }  
+
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
