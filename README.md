@@ -1,40 +1,37 @@
-# 03 JavaScript: Password Generator
+# Random Password Generator
 
-Create an application that generates a random password based on user-selected criteria. This app will run in the browser and feature dynamically updated HTML and CSS powered by your JavaScript code. It will also feature a clean and polished user interface and be responsive, ensuring that it adapts to multiple screen sizes.
-
-If you are unfamiliar with special characters, take a look at [some examples](https://www.owasp.org/index.php/Password_special_characters).
-
-## User Story
-
-```
-AS AN employee with access to sensitive data
-I WANT to randomly generate a password that meets certain criteria
-SO THAT I can create a strong password that provides greater security
-```
+This is an application that will randomly generate a password based on user-selected criteria. Through a series of prompts, the user will determine whether they want numbers, letters (UPPER/lower), and/or special characters. This application runs in a browser based setting and is built using HTML, CSS and JavaScript.
 
 ## Acceptance Criteria
 
 ```
-GIVEN I need a new, secure password
-WHEN I click the button to generate a password
-THEN I am presented with a series of prompts for password criteria
-WHEN prompted for password criteria
-THEN I select which criteria to include in the password
-WHEN prompted for the length of the password
-THEN I choose a length of at least 8 characters and no more than 128 characters
-WHEN prompted for character types to include in the password
-THEN I choose lowercase, uppercase, numeric, and/or special characters
-WHEN I answer each prompt
-THEN my input should be validated and at least one character type should be selected
-WHEN all prompts are answered
-THEN a password is generated that matches the selected criteria
-WHEN the password is generated
-THEN the password is either displayed in an alert or written to the page
+* Password Length: 8 to 128 characters
+* One of the following:
+    * UPPER case letters
+    * lower case letters
+    * numbers
+    * special characters
 ```
 
-The following image demonstrates the application functionality:
+## Input Process
 
-![password generator demo](./Assets/03-javascript-homework-demo.png)
+```
+1. The end user will start the program by selecting the "Generate Password".
+2. The app will prompt the user with a window asking for the number of characters they would like to have their password created from.
+3. The app will validate that that the user has input an accepted value.
+4. The app will prompt the user with a series for four confirmation windows where they will determine what their password will be made up of.
+5. The app will validate that at least one of criteria is met.
+6. The app will generate a password and display it on the screen.
+7. The end user will be provided an additional button that will copy the generated password to their clipboard.
+```
+
+### Deployed URL
+
+https://minnesotanyst.github.io/pwd-generator/
+
+### Preview 
+
+
 
 ## Review
 
@@ -44,5 +41,3 @@ You are required to submit the following for review:
 
 * The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
 
-- - -
-© 2020 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
