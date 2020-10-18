@@ -30,7 +30,7 @@ function writePassword() {
 		}
 		
 	//----GENERATE THE PASSWORD----//
-	function generatePassword () {
+	var password = function generatePassword () {
 		if (pwd.specChar === true && pwd.lowerCase === true && pwd.upperCase === true && pwd.numChar === true){
 			compiledChar = options.all;
 
@@ -73,25 +73,33 @@ function writePassword() {
 		} else if (pwd.numChar === true){
 			compiledChar = numChar;
 
-		} else if (pwd.specChar){
+		} else if (pwd.specChar === true){
 			compiledChar = specials;
 		};
 
 		for (i = 0; i < charCount; i++){
 			var char = compiledChar[Math.floor(Math.random() * compiledChar.length)];
-			passwordHolder.push(char);
-		}
-	}
+			passwordArray.push(char);
+		
 	
-	var passwordHolder = [];
-		console.log(passwordHolder);
-	var newPassword = generatePassword();
-	var passwordText = document.querySelector('#password');
-	passwordText.value = newPassword;
+			//store the password as an array
+			var passwordArray = [];
+				console.log(passwordArray);
+		}
+		
+		//need to convert the stored array to a string
+		var password = passwordArray.join('');
+		
+		var passwordText = document.querySelector("#password");
+
+		passwordText.value = password;
+		
+	}
 }
 
 // Assignment Code
 var generateBtn = document.querySelector('#generate');
+
 
 //------------ASSIGN USER INPUT VARIABLES----------------//
 //values that will be defiend by the end user
