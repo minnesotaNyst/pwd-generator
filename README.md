@@ -17,12 +17,12 @@ This is an application that will randomly generate a password based on user-sele
 
 ```
 1. The end user will start the program by selecting the "Generate Password".
-2. The app will prompt the user with a window asking for the number of characters they would like to have their password created from.
+2. The app will prompt the user with a window to determin password length.
 3. The app will validate that that the user has input an accepted value.
-4. The app will prompt the user with a series for four confirmation windows where they will determine what their password will be made up of.
+4. The app will prompt the user with a series for four confirmation windows to determine pwd criteria.
 5. The app will validate that at least one of criteria is met.
 6. The app will generate a password and display it on the screen.
-7. The end user will be provided an additional button that will copy the generated password to their clipboard.
+7. The end user is provided a "Copy" button that will copy the generated password to their clipboard.
 ```
 
 ### Deployed URL
