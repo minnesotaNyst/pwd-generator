@@ -1,6 +1,7 @@
 
 // Assignment Code
 var generateBtn = document.querySelector('#generate');
+var copyBtn = document.querySelector("#copy")
 
 //------------ASSIGN USER INPUT VARIABLES----------------//
 //values that will be defiend by the end user
@@ -70,7 +71,7 @@ function generatePassword() {
 		//the requirment is that at least one critera be selected in order to generate a password
 		if (!pwd.upperCase && !pwd.lowerCase && !pwd.specChar && !pwd.numChar){
 			alert("Please select at least one criteria...");
-			generatePassword(); //TODO: this could affect workflow negatively by sending the user back to the begining, work on adjusting this later
+			generatePassword();
 		}
 		
 		if (pwd.specChar === true && pwd.lowerCase === true && pwd.upperCase === true && pwd.numChar === true){
@@ -124,7 +125,6 @@ function generatePassword() {
 		var char = Math.floor(Math.random() * compiledChar.length);
 		newPassword += compiledChar.charAt(char, char +1);
 		}
-		//LEARN: Why do I need the return here?
 		return newPassword;
 }
 
@@ -136,8 +136,15 @@ function writePassword() {
 	passwordText.value = newPassword;
   }  
 
+//copy to clipboard function
+function copyClip() {
+	let newPassword = document.querySelector("#password");
+	newPassword.select();
+	document.execCommand("copy");
+}
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+copyBtn.addEventListener('click', copyClip);
 
 
