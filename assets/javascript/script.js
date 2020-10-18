@@ -1,10 +1,15 @@
 var generateBtn = document.querySelector('#generate');
 var copyBtn = document.querySelector("#copy")
 
-//----ASSIGN USER INPUT VARIABLES----//
-var charCount;
+//----PASSWORD CHARACTER POSSIBILITIES----//
+var specials = ".'):~;!-#%*$@=>[(&{}<?]^+/";
+var charactersLower = "abcdefghijklmnopqrstuvwxyz";
+var charactersUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numChar = "1234567890";
+
+//----PWD CREATE VARIABLES----//
+var newPassword = ""
 var compiledChar;
-var newPassword = "";
 var pwd = {
 	upperCase: true,
 	lowerCase: true,
@@ -18,19 +23,13 @@ var pwd = {
 	}
 }
 
-//----PASSWORD CHARACTER POSSIBILITIES----//
-var specials = ".'):~;!-#%*$@=>[(&{}<?]^+/";
-var charactersLower = "abcdefghijklmnopqrstuvwxyz";
-var charactersUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numChar = "1234567890";
-
 //----GET THE PASSWORD CRITERIA----//
 function generatePassword() {
 	//create a reset so the end user does not get caught in an infinite loop
 	pwd.reset();
 	let newPassword = "";
 	//gather the critera for the password in order to generate one
-	charCount = parseInt(prompt('How many characters would you like your password to be? Please select a number between 8 and 128.'));
+	var charCount = parseInt(prompt('How many characters would you like your password to be? Please select a number between 8 and 128.'));
 	//check to see that a charCount number exists and determine if it is between 8 and 128
 		if (!charCount){
 			alert("Please enter a valid number between 8 and 128 if you would like to continue...");
